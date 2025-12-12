@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Showdown Season 2 – Countdown</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto Condensed', sans-serif;
+      background: radial-gradient(circle at center, #0a0a0d 0%, #000000 100%);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Background vignette */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    .logo {
+      margin-top: 40px;
+      width: 480px;
+      filter: drop-shadow(0 0 25px #ff0000aa);
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 3.5rem;
+      margin-top: 20px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px #ff0000aa;
+      color: #ff0000;
+    }
+
+    #countdown {
+      font-size: 6.8rem;
+      margin-top: 10px;
+      color: #ff55ff;
+      text-shadow: 0 0 10px #ff55ffaa;
+      font-weight: bold;
+    }
+
+    .frame {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: rgba(15, 15, 20, 0.7);
+      border-radius: 20px;
+      border: 2px solid #ff000055;
+      box-shadow: 0 0 30px #ff000044;
+    }
+
+    .promo-img {
+      width: 90%;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px #000000aa;
+    }
+
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;margin:10px auto;padding:14px 24px;width:260px;font-size:1.2rem;font-weight:bold;border-radius:14px;text-decoration:none;color:white;background:#111;border:2px solid #ff000088;box-shadow:0 0 15px #ff000044;transition:0.25s;}.btn:hover{transform:scale(1.05);box-shadow:0 0 25px #ff0000aa;}.btn-icon{height:22px;}.yt-btn{border-color:#ff0000;}.group-btn{border-color:#ff55ff;}</style>
+</head>
+<body>
+  <!-- Logo -->
+  <img src="showdownlogo.png" class="logo" style="width:900px; margin-top:10px;" />
+
+  
+
+  <div id="countdown">Loading...</div>
+
+<div class="frame"><h2 style="color:#ff0000; text-shadow:0 0 8px #ff000088; font-size:2rem;">The Ultimate UGC Event</h2><p style="font-size:1.3rem; color:#e6e6e6; max-width:700px; margin:auto; line-height:1.5;">The Showdown Season 2 is a high‑stakes UGC competition where <strong>39 contestants</strong> battle across <strong>4 intense games</strong>. Win—and advance. You dont want to lose! And Only one wins.<br><br>The last player standing receives the exclusive <strong>UGC prize</strong>.</p><br><a class="btn roblox-btn" href="https://www.roblox.com/games/137022925310567/The-Showdown-Season-2" target="_blank"><img src="roblox logo.png" class="btn-icon">Game Link</a><a class="btn group-btn" href="https://www.roblox.com/communities/33045926/Official-Bandit-Bros#!/about" target="_blank"><img src="roblox logo.png" class="btn-icon">Roblox Group</a><a class="btn yt-btn" href="https://www.youtube.com/@banditsmoke" target="_blank"><img src="Youtube_logo.png" class="btn-icon">Youtube Channel</a><img src="showdonw.jpg" class="promo-img" alt="Promo Image" /></div>
+
+
+  <script>
+    const target = new Date("2025-12-14T15:00:00-05:00").getTime();
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerText = "The time has arrived!";
+        clearInterval(timer);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    }
+
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
