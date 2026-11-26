@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: monospace;
+            color: #ffffff;
+        }
+
+        .timer {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(22px, 5vw, 55px);
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .separator {
+            color: #555555;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="timer">
+        <span class="number" id="days">00</span>
+        <span class="separator">:</span>
+        <span class="number" id="hours">00</span>
+        <span class="separator">:</span>
+        <span class="number" id="minutes">00</span>
+        <span class="separator">:</span>
+        <span class="number" id="seconds">00</span>
+        <span class="separator">:</span>
+        <span class="number" id="milliseconds">000</span>
+    </div>
+
+    <script>
+        const targetDate = new Date("2027-02-07T13:00:00-05:00").getTime();
+
+        function updateTimer() {
+            let distance = Math.max(0, targetDate - Date.now());
+
+            const days = Math.floor(distance / 86400000);
+            const hours = Math.floor((distance % 86400000) / 3600000);
+            const minutes = Math.floor((distance % 3600000) / 60000);
+            const seconds = Math.floor((distance % 60000) / 1000);
+            const milliseconds = distance % 1000;
+
+            document.getElementById("days").textContent =
+                String(days).padStart(2, "0");
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+
+            document.getElementById("milliseconds").textContent =
+                String(milliseconds).padStart(3, "0");
+        }
+
+        setInterval(updateTimer, 10);
+        updateTimer();
+    </script>
+<audio id="backgroundMusic" autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
